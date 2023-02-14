@@ -24,8 +24,8 @@ def prims_mst(graph):
         selected[node] = False
     selected[nodes[0]] = True
 
-    unprocessed_nodes = len(nodes)
-    while unprocessed_nodes > 1:
+    nodes_left = len(nodes) - 1
+    while nodes_left:
         minimum = inf
 
         min_edge_nodes = [None, None]
@@ -36,7 +36,7 @@ def prims_mst(graph):
                         minimum = graph.value(node1, node2)
                         min_edge_nodes = [node1, node2]
 
-        unprocessed_nodes -= 1
+        nodes_left -= 1
         node1, node2 = min_edge_nodes
         selected[node2] = True
         print('shortest path', node1, 'to', node2, 'is taking', minimum, 'cost')
